@@ -1,16 +1,58 @@
-# This is a sample Python script.
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+"""
+************ PERFECT NUMBERS ************
+
+Definition #1:
+A perfect number is a positive integer that equals the sum of its divisors except itself.
+
+Definition #2:
+A perfect number is a positive integer that is half the sum of all its divisors including itself.
+
+Unsolved perfect numbers:
+1. Are there infinitely many perfect number?
+2. Is there an odd perfect numbers?
+"""
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+def is_perfect_number(divisor_sum, test_num, method):
+    if method == 1:
+        if divisor_sum == test_num:
+            return True
+    else:
+        divisor_sum += test_num
+        if test_num == divisor_sum / 2:
+            return True
+    return False
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('Recreation Math Spec')
+print('\n********** Perfect numbers **********')
+print('\nDefinition #1:')
+print('A perfect number is a positive integer that equals the sum of its divisors except itself.')
+print('\nDefinition #2:')
+print('A perfect number is a positive integer that is half the sum of all its divisors including itself.')
+print('\nChoose a solving method;')
+print('\tEnter 1 to find a perfect number by using definition #1')
+print('\tEnter 2 to find a perfect number by using definition #2')
+solving_method = int(input('Your selection: '))
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# while solving_method != range(1, 3):
+#     print('Invalid solving method')
+#     solving_method = int(input('Enter digit 1 or 2: '))
+#     if solving_method == range(1, 3):
+#         break
+
+num = int(input('Enter a number: '))
+divisors = []
+added_divisors = 0
+
+for i in range(1, num):
+    if num % i == 0:
+        divisors.append(i)
+
+for j in divisors:
+    added_divisors += j
+
+if is_perfect_number(added_divisors, num, solving_method):
+    print(f'{num} is a perfect number.')
+else:
+    print(f'{num} is not a perfect number.')
