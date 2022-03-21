@@ -30,7 +30,6 @@ def is_perfect_number(test_num, method):
         if divisors_sum == test_num:
             return True
     else:
-        divisors_sum += test_num
         if clamp_test_num(divisors_sum):
             if test_num == divisors_sum / 2:
                 return True
