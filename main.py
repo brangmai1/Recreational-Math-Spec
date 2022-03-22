@@ -1,4 +1,3 @@
-
 """
 ************ PERFECT NUMBERS ************
 
@@ -19,11 +18,9 @@ Unsolved perfect numbers:
 def is_perfect_number(test_num, method):
     divisors = []
     divisors_sum = 0
-
-    for i in range(1, num):
+    for i in range(1, test_num):
         if num % i == 0:
             divisors.append(i)
-
     for j in divisors:
         divisors_sum += j
     if method == 1:
@@ -46,18 +43,30 @@ def clamp_test_num(n):
     return True
 
 
-print('\n********** Perfect numbers **********')
-print('\nDefinition #1:')
-print('A perfect number is a positive integer that equals the sum of its divisors except itself.')
-print('\nDefinition #2:')
-print('A perfect number is a positive integer that is half the sum of all its divisors including itself.')
-print('\nChoose a solving method;')
-print('\tEnter 1 to find a perfect number by using definition #1')
-print('\tEnter 2 to find a perfect number by using definition #2\n')
-solving_method = int(input('Your selection: '))
+def perfect_numbers_info():
+    print('\n********** Perfect numbers **********')
+    print('\nDefinition #1:')
+    print('A perfect number is a positive integer that equals the sum of its divisors except itself.')
+    print('\nDefinition #2:')
+    print('A perfect number is a positive integer that is half the sum of all its divisors including itself.')
+    print('\nChoose a solving method;')
+    print('\tEnter 1 to find a perfect number by using definition #1')
+    print('\tEnter 2 to find a perfect number by using definition #2\n')
 
-num = int(input('Enter a number: '))
-if is_perfect_number(num, solving_method):
-    print(f'{num} is a perfect number.')
-else:
-    print(f'{num} is not a perfect number.')
+
+if __name__ == '__main__':
+    perfect_numbers_info()
+    solving_method = int(input('Your selection: '))
+
+    done = False
+    while not done:
+        num = int(input('Enter a number: '))
+
+        if is_perfect_number(num, solving_method):
+            print(f'{num} is a perfect number.')
+        else:
+            print(f'{num} is not a perfect number.')
+        exit_checking = input('Exit (y/n): ')
+        if exit_checking == 'y':
+            done = True
+
